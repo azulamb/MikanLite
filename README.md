@@ -6,7 +6,7 @@ MikanLite use Direct2D.
 
 ## Sample
 
-MikanLite.dll puts in the same location as the exe.
+Download MikanLite.dll and MikanLite.dll puts in the same location as the exe.
 
 ```cpp
 #include "MikanLite.h"
@@ -31,10 +31,14 @@ public:
 		Mikan.draw->Printf( 0, 0, 0, L"Test:%d", ++timer );
 		return true;
 	}
+	void Final()
+	{
+	}
 };
 
 int Main()
 {
+	// Set GameView.
 	Mikan.system->SetGameView( new Game() );
 	return 0;
 }
