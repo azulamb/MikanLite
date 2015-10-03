@@ -9,6 +9,8 @@ MikanLite use Direct2D.
 Download MikanLite.dll(MikanLiteD.dll when debug) and MikanLite.h.
 MikanLite.dll(MikanLiteD.dll when debug) puts in the same location as the exe.
 
+Default FPS 30.
+
 Main() => (Create Window) => Init() => Loop() (Every frame) => Final()
 
 ```cpp
