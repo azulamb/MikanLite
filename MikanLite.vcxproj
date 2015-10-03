@@ -151,6 +151,7 @@
     <ClInclude Include="MikanLite.h" />
     <ClInclude Include="src\Common.h" />
     <ClInclude Include="src\MikanLiteDraw.h" />
+    <ClInclude Include="src\MikanLiteFPSController.h" />
     <ClInclude Include="src\MikanLiteInput.h" />
     <ClInclude Include="src\MikanLiteSystem.h" />
     <ClInclude Include="src\MikanLiteWindow.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="src\MikanLiteDraw.cpp" />
     <ClCompile Include="src\MikanLiteDrawManagement.cpp" />
     <ClCompile Include="src\MikanLiteFont.cpp" />
+    <ClCompile Include="src\MikanLiteFPSController.cpp" />
     <ClCompile Include="src\MikanLiteInput.cpp" />
     <ClCompile Include="src\MikanLiteSystem.cpp" />
     <ClCompile Include="src\MikanLiteWindow.cpp" />

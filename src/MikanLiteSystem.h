@@ -2,6 +2,7 @@
 #define __MIKAN_LITE_SYSTEM
 
 #include "Common.h"
+#include "MikanLiteFPSController.h"
 
 #define _CRTDBG_MAP_ALLOC
 
@@ -29,9 +30,12 @@ private:
 	bool notruninactive;
 	class GameView *now, *next;
 
+	class FPSController *fps;
+
 	void Update( void );
 public:
 	MikanLiteSystem( void );
+	virtual ~MikanLiteSystem( void );
 	virtual int Init( HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow );
 	virtual int Main( class DrawManagement * draw, class InputManagement *input );
 
@@ -49,6 +53,9 @@ public:
 	virtual bool CannotRunInactiveWindow( void );
 	virtual void SetInactiveWindow( bool notruninactive = true );
 
+	virtual void SetFPSController( class FPSController *fpscontroller );
+	virtual float GetNowFPS( void );
+	virtual void SetFPS( int fps );
 	virtual void WaitNextFrame( void );
 
 	virtual void SetGameLoop( bool run = false );

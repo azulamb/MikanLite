@@ -87,6 +87,9 @@ public:
 	virtual bool CannotRunInactiveWindow( void ) = 0;
 	virtual void SetInactiveWindow( bool notruninactive = true ) = 0;
 
+	virtual void SetFPSController( class FPSController *fps ) = 0;
+	virtual float GetNowFPS( void ) = 0;
+	virtual void SetFPS( int fps ) = 0;
 	/// <summary>Wait next frame.</summary>
 	virtual void WaitNextFrame( void ) = 0;
 
@@ -97,6 +100,15 @@ public:
 	/// <summary>Set GameView.</summary>
 	/// <param name="gview">Change GameView when next frame.</param>
 	virtual void SetGameView( class GameView *gview ) = 0;
+};
+
+class FPSController
+{
+public:
+	virtual float GetNowFPS( void ) = 0;
+	virtual int GetFPS( void ) = 0;
+	virtual void SetFPS( int fps ) = 0;
+	virtual void Wait( void ) = 0;
 };
 
 enum WINDOWTYPE

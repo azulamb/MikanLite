@@ -1,4 +1,5 @@
 #include "MikanLiteSystem.h"
+#include "MikanLiteFPSController.h"
 
 void MikanLiteSystem::Update()
 {
@@ -24,6 +25,13 @@ MikanLiteSystem::MikanLiteSystem()
 	SetInactiveWindow( true );
 	now = next = NULL;
 	SetGameView( new GameView() );
+	fps = NULL;
+	SetFPSController( new MikanLiteFPSController() );
+}
+
+MikanLiteSystem::~MikanLiteSystem( void )
+{
+	delete( fps );
 }
 
 int MikanLiteSystem::Init( HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow )
@@ -131,9 +139,31 @@ void MikanLiteSystem::SetInactiveWindow( bool notruninactive )
 	this->notruninactive = notruninactive;
 }
 
+void MikanLiteSystem::SetFPSController( class FPSController * fpscontroller )
+{
+	int beforefps = 30;
+	if ( fps )
+	{
+		beforefps = fps->GetFPS();
+		delete( fps );
+	}
+	fps = fpscontroller;
+	fps->SetFPS( beforefps );
+}
+
+float MikanLiteSystem::GetNowFPS( void )
+{
+	return fps->GetNowFPS();
+}
+
+void MikanLiteSystem::SetFPS( int fps )
+{
+	this->fps->SetFPS( fps );
+}
+
 void MikanLiteSystem::WaitNextFrame( void )
 {
-	Sleep( 20 );
+	fps->Wait();
 }
 
 void MikanLiteSystem::SetGameLoop( bool run )
