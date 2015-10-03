@@ -16,9 +16,7 @@ LRESULT CALLBACK WindowProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam 
 {
 	switch ( uMsg )
 	{
-	case WM_INPUT:
-		( ( class MikanLiteInput * )_Mikan.input )->UpdateKeyboard();
-		break;
+	//case WM_INPUT:
 	//case WM_LBUTTONDBLCLK:
 	case WM_LBUTTONDOWN:
 	case WM_LBUTTONUP:
@@ -31,6 +29,10 @@ LRESULT CALLBACK WindowProc( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam 
 		( ( class MikanLiteInput * )_Mikan.input )->UpdateMouse( hWnd, uMsg, wParam, lParam );
 		break;
 	case WM_TOUCH:
+		break;
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+		( ( class MikanLiteInput * )_Mikan.input )->UpdateKeyboard( hWnd, uMsg, wParam, lParam );
 		break;
 	case WM_ACTIVATE:
 		if ( LOWORD( wParam ) == WA_INACTIVE )

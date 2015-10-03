@@ -6,11 +6,13 @@ MikanLiteInput::MikanLiteInput( void )
 	mouse.point.y = 0;
 	mouse.buf[ 0 ] = mouse.buf[ 1 ] = mouse.buf[ 2 ] = false;
 	mouse.frame[ 0 ] = mouse.frame[ 1 ] = mouse.frame[ 2 ] = 0;
+	InitKeyboard();
 }
 
 void MikanLiteInput::Update( void )
 {
 	ReflectMouse();
+	ReflectKeyboard();
 }
 
 void MikanLiteInput::UpdateMouse( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
@@ -38,7 +40,7 @@ void MikanLiteInput::UpdateMouse( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lP
 	}
 }
 
-void MikanLiteInput::ReflectMouse()
+void MikanLiteInput::ReflectMouse( void )
 {
 	GetCursorPos( &mouse.point );
 	ScreenToClient( GetActiveWindow(), &mouse.point );
@@ -101,6 +103,54 @@ int MikanLiteInput::GetMouseFrame( unsigned int button )
 	return mouse.frame[ button ];
 }
 
-void MikanLiteInput::UpdateKeyboard( void )
+void MikanLiteInput::UpdateKeyboard( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )
 {
+	switch ( uMsg )
+	{
+	case WM_KEYDOWN:
+		key.buf[ ( key.last = wParam ) ] = true;
+		break;
+	case WM_KEYUP:
+		key.buf[ wParam ] = false;
+		break;
+	}
+}
+
+void MikanLiteInput::InitKeyboard( void )
+{
+	int i;
+	key.last = 0;
+	for ( i = 0; i < 0xFF; ++i )
+	{
+		key.buf[ i ] = false;
+		key.frame[ i ] = 0;
+	}
+}
+
+void MikanLiteInput::ReflectKeyboard( void )
+{
+	int i;
+	for ( i = 0; i < 0xFF; ++i )
+	{
+		if ( key.buf[ i ] )
+		{
+			++key.frame[ i ];
+		} else if ( 0 < key.frame[ i ] )
+		{
+			key.frame[ i ] = -1;
+		} else
+		{
+			key.frame[ i ] = 0;
+		}
+	}
+}
+
+int MikanLiteInput::GetKeyFrame( unsigned char keycode )
+{
+	return key.frame[ keycode ];
+}
+
+unsigned char MikanLiteInput::GetWhichKey( void )
+{
+	return key.buf[ key.last ] ? key.last : 0;
 }

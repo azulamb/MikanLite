@@ -26,9 +26,9 @@ int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine
 	HINSTANCE dll;\
 	int( *MLMain )( int( *)( ), HINSTANCE, struct MIKAN_LITE *, HINSTANCE, HINSTANCE, PSTR, int );\
 	int( *MLVer )();\
-	if ( !( dll = ::LoadLibraryEx( TEXT( MIKANLITE_DLL ), NULL, 0 ) ) ) { fprintf( stderr, "Mikan Lite DLL version is different." ); return 1; }\
+	if ( !( dll = ::LoadLibraryEx( TEXT( MIKANLITE_DLL ), NULL, 0 ) ) ) { fprintf( stderr, "%s not found.", MIKANLITE_DLL ); return 1; }\
 	MLVer = ( int( *)() )::GetProcAddress( dll, "MikanLiteVerCode" );\
-	if ( MLVer() != MIKANLITE_VERCODE ){ return 1; }\
+	if ( MLVer() != MIKANLITE_VERCODE ){ fprintf( stderr, "Mikan Lite DLL version is different." ); return 1; }\
 	MLMain = ( int( *)( int( *)( ), HINSTANCE, struct MIKAN_LITE *, HINSTANCE, HINSTANCE, PSTR, int ) )::GetProcAddress( dll, "MikanLiteMain" );\
 	MLMain( Main, dll, &Mikan, hInstance, hPrevInstance, lpCmdLine, nCmdShow );\
 	::FreeLibrary( dll );\
@@ -392,6 +392,120 @@ public:
 	virtual int GetMouseY( void ) = 0;
 	virtual void SetMousePosition( int x, int y ) = 0;
 	virtual int GetMouseFrame( unsigned int button ) = 0;
+
+	virtual int GetKeyFrame( unsigned char keycode ) = 0;
+	virtual unsigned char GetWhichKey( void ) = 0;
 };
+
+#define K_BACK     VK_BACK
+#define K_TAB      VK_TAB
+#define K_ENTER    VK_RETURN
+#define K_RETURN   VK_RETURN
+#define K_SHIFT    VK_SHIFT
+#define K_CTRL     VK_CONTROL
+#define K_ALT      VK_MENU
+#define K_PAUSE    VK_PAUSE
+#define K_CAPSLOCK VK_CAPITAL
+#define K_KANA     VK_KANA
+#define K_KANJI    VK_KANJI
+#define K_ESC      VK_ESCAPE
+#define K_CONV     VK_CONVERT
+#define K_NONCONV  VK_NONCONVERT
+#define K_SPACE    VK_SPACE
+#define K_PAGEUP   VK_PRIOR
+#define K_PAGEDOWN VK_NEXT
+#define K_END      VK_END
+#define K_HOME     VK_HOME
+#define K_LEFT     VK_LEFT
+#define K_UP       VK_UP
+#define K_RIGHT    VK_RIGHT
+#define K_DOWN     VK_DOWN
+#define K_PRINT    VK_PRINT
+#define K_0        0x30
+#define K_1        0x31
+#define K_2        0x32
+#define K_3        0x33
+#define K_4        0x34
+#define K_5        0x35
+#define K_6        0x36
+#define K_7        0x37
+#define K_8        0x38
+#define K_9        0x39
+#define K_A        0x41
+#define K_B        0x42
+#define K_C        0x43
+#define K_D        0x44
+#define K_E        0x45
+#define K_F        0x46
+#define K_G        0x47
+#define K_H        0x48
+#define K_I        0x49
+#define K_J        0x4A
+#define K_K        0x4B
+#define K_L        0x4C
+#define K_M        0x4D
+#define K_N        0x4E
+#define K_O        0x4F
+#define K_P        0x50
+#define K_Q        0x51
+#define K_R        0x52
+#define K_S        0x53
+#define K_T        0x54
+#define K_U        0x55
+#define K_V        0x56
+#define K_W        0x57
+#define K_X        0x58
+#define K_Y        0x59
+#define K_Z        0x5A
+#define K_LWIN     VK_LWIN
+#define K_RWIN     VK_RWIN
+#define K_APPS     VK_APPS
+#define K_NUM_0    VK_NUMPAD0
+#define K_NUM_1    VK_NUMPAD1
+#define K_NUM_2    VK_NUMPAD2
+#define K_NUM_3    VK_NUMPAD3
+#define K_NUM_4    VK_NUMPAD4
+#define K_NUM_5    VK_NUMPAD5
+#define K_NUM_6    VK_NUMPAD6
+#define K_NUM_7    VK_NUMPAD7
+#define K_NUM_8    VK_NUMPAD8
+#define K_NUM_9    VK_NUMPAD9
+#define K_NUM_MUL  VK_MULTIPLY
+#define K_NUM_ADD  VK_ADD
+#define K_NUM_SUB  VK_SUBTRACT
+#define K_NUM_DEC  VK_DECIMAL
+#define K_NUM_DIV  VK_DIVIDE
+#define K_F1       VK_F1
+#define K_F2       VK_F2
+#define K_F3       VK_F3
+#define K_F4       VK_F4
+#define K_F5       VK_F5
+#define K_F6       VK_F6
+#define K_F7       VK_F7
+#define K_F8       VK_F8
+#define K_F9       VK_F9
+#define K_F10      VK_F10
+#define K_F11      VK_F11
+#define K_F12      VK_F12
+#define K_F13      VK_F13
+#define K_F14      VK_F14
+#define K_F15      VK_F15
+#define K_F16      VK_F16
+#define K_F17      VK_F17
+#define K_F18      VK_F18
+#define K_F19      VK_F19
+#define K_F20      VK_F20
+#define K_F21      VK_F21
+#define K_F22      VK_F22
+#define K_F23      VK_F23
+#define K_F24      VK_F24
+#define K_NUMLOCK  VK_NUMLOCK
+#define K_SCROLL   VK_SCROLL
+#define K_LSHIFT   VK_LSHIFT
+#define K_RSHIFT   VK_RSHIFT
+#define K_LCTRL    VK_LCONTROL
+#define K_RCTRL    VK_RCONTROL
+#define K_LALT     VK_LMENU
+#define K_RALT     VK_RMENU
 
 #endif
