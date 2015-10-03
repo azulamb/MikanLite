@@ -1,0 +1,379 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        "MikanLite"
+    </assembly>
+    <members>
+        <member name="M:MikanDraw.Printf(System.UInt32,System.Int32,System.Int32,System.UInt32!System.Runtime.CompilerServices.IsLong,System.Char!System.Runtime.CompilerServices.IsConst*,BTEllipsis)">
+            <summary>Create font.</summary>
+            <param name="font">Font number.</param>
+            <param name="x">Draw x position.</param>
+            <param name="y">Draw y position.</param>
+            <param name="color">Font color.</param>
+            <param name="format">Print string.</param>
+        </member>
+        <member name="M:MikanDraw.Printf(System.UInt32,System.Int32,System.Int32,System.Char!System.Runtime.CompilerServices.IsConst*,BTEllipsis)">
+            <summary>Create font.</summary>
+            <param name="font">Font number.</param>
+            <param name="x">Draw x position.</param>
+            <param name="y">Draw y position.</param>
+            <param name="format">Print string.</param>
+        </member>
+        <member name="M:MikanDraw.Print(System.UInt32,System.Int32,System.Int32,System.UInt32!System.Runtime.CompilerServices.IsLong,System.Char!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Create font.</summary>
+            <param name="font">Font number.</param>
+            <param name="x">Draw x position.</param>
+            <param name="y">Draw y position.</param>
+            <param name="color">Font color.</param>
+            <param name="str">Print string.</param>
+        </member>
+        <member name="M:MikanDraw.Print(System.UInt32,System.Int32,System.Int32,System.Char!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Create font.</summary>
+            <param name="font">Font number.</param>
+            <param name="x">Draw x position.</param>
+            <param name="y">Draw y position.</param>
+            <param name="str">Print string.</param>
+        </member>
+        <member name="M:MikanDraw.CreateFont(System.UInt32,System.Char!System.Runtime.CompilerServices.IsConst*,System.Int32,System.UInt32!System.Runtime.CompilerServices.IsLong,System.Int32,System.Int32)">
+            <summary>Create font.</summary>
+            <param name="font">Font number.(Max 31)</param>
+            <param name="fontname">Font name.(Default Meiryo)</param>
+            <param name="size">Font size.(Default 10px)</param>
+            <param name="color">Font default color.(Default 0xFFFFFFFF = White)</param>
+            <param name="weight">Font weight.(Default 400)</param>
+            <param name="italic">Font italic.(Default 0)</param>
+        </member>
+        <member name="M:MikanDraw.DrawBox(System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32!System.Runtime.CompilerServices.IsLong)">
+            <summary>Draw box.</summary>
+            <param name="x">X position.</param>
+            <param name="t">Y position.</param>
+            <param name="w">Width.</param>
+            <param name="h">Height.</param>
+        </member>
+        <member name="M:MikanDraw.ClearScreen">
+            <summary>Clear screen.</summary>
+        </member>
+        <member name="T:ID2D1HwndRenderTarget">
+            <summary>Get ID2D1HwndRenderTarget.</summary>
+            <returns>ID2D1HwndRenderTarget.</returns>
+        </member>
+        <member name="T:IDWriteFactory">
+            <summary>Get IDWriteFactory.</summary>
+            <returns>IDWriteFactory.</returns>
+        </member>
+        <member name="T:ID2D1Factory">
+            <summary>Get ID2D1Factory.</summary>
+            <returns>ID2D1Factory.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDesktopSize(System.Int32*,System.Int32*)">
+            <summary>Get desktop size.</summary>
+            <param name="width">Get desktop width.(int variable pointer)</param>
+            <param name="height">Get desktop height.(int variable pointer)</param>
+        </member>
+        <member name="M:MikanWindow.GetDesktopHeight">
+            <summary>Get desktop height.</summary>
+            <returns>Desktop height.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDesktopWidth">
+            <summary>Get desktop width.</summary>
+            <returns>Desktop width.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDisplayRect(System.Int32!System.Runtime.CompilerServices.IsLong,tagRECT*)">
+            <summary>Get display rect.</summary>
+            <param name="display">Display number.</param>
+            <param name="rect">Get rect.(RECT variable pointer.)</param>
+            <returns>0 = Success. 1 = Invalid display. 2 = Cannot get size.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDisplayRect(System.Int32!System.Runtime.CompilerServices.IsLong,System.Int32*,System.Int32*,System.Int32*,System.Int32*)">
+            <summary>Get display position &amp; size.</summary>
+            <param name="display">Display number.</param>
+            <param name="x">Get x position.(int variable pointer)</param>
+            <param name="y">Get y position.(int variable pointer)</param>
+            <param name="width">Get width.(int variable pointer)</param>
+            <param name="height">Get height.(int variable pointer)</param>
+            <returns>0 = Success. 1 = Invalid display. 2 = Cannot get size.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDisplaySize(System.Int32!System.Runtime.CompilerServices.IsLong,System.Int32*,System.Int32*)">
+            <summary>Get display size.</summary>
+            <param name="display">Display number.</param>
+            <param name="width">Get width.(int variable pointer)</param>
+            <param name="height">Get height.(int variable pointer)</param>
+            <returns>0 = Success. 1 = Invalid display. 2 = Cannot get size.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDisplayNumber(HWND__*)">
+            <summary>Calc display number in window.(Largest area)</summary>
+            <param name="window">Window handle.</param>
+            <returns>Display number.</returns>
+        </member>
+        <member name="M:MikanWindow.GetDisplayMax">
+            <summary>Get connect display max.</summary>
+            <returns>Display max.</returns>
+        </member>
+        <member name="M:MikanWindow.ReceiveDragFiles(HDROP__*)">
+            <summary>Drag&amp;Drop function called in window procedure.</summary>
+            <param name="hdrop">3rd arg in window procedure.(cast HDROP)</param>
+        </member>
+        <member name="M:MikanWindow.GetReceiveDragFilePath(System.Int32)">
+            <summary>Get file name from drag&amp;drop.</summary>
+            <param name="num">File number.</param>
+            <returns>File name.</returns>
+        </member>
+        <member name="M:MikanWindow.SetReceiveDragFileFunction(=FUNC:System.Int32(System.Int32))">
+            <summary>Set function when drag&amp;drop files.</summary>
+            <param name="func">int Function( int files )</param>
+        </member>
+        <member name="M:MikanWindow.GetParameter">
+            <summary>Get parameter.</summary>
+            <returns>Parameter.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowProc(=FUNC:System.Int32!System.Runtime.CompilerServices.IsLong(HWND__*,System.UInt32,System.UInt32,System.Int32!System.Runtime.CompilerServices.IsLong))">
+            <summary>Set window procedure.</summary>
+            <param name="winproc">LRESULT CALLBACK Function( HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam )</param>
+        </member>
+        <member name="M:MikanWindow.SetInstanceHandle(HINSTANCE__*)">
+            <summary>Set instance handle.</summary>
+            <param name="instance">Instance handle.</param>
+        </member>
+        <member name="M:MikanWindow.GetInstanceHandle">
+            <summary>Get instance handle.</summary>
+            <returns>Instance handle.</returns>
+        </member>
+        <member name="M:MikanWindow.SetDeviceContext(HDC__*)">
+            <summary>Set device context.</summary>
+            <param name="dc">Device context.</param>
+        </member>
+        <member name="M:MikanWindow.SetMenuHandle(HMENU__*)">
+            <summary>Set menu handle.</summary>
+            <param name="menu">Menu handle.</param>
+        </member>
+        <member name="M:MikanWindow.GetMenuHandle">
+            <summary>Get menu handle.</summary>
+            <returns>Menu handle.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowClassEx(tagWNDCLASSEXW)">
+            <summary>Set window class ex.</summary>
+            <param name="wc">Window class ex.</param>
+        </member>
+        <member name="M:MikanWindow.GetWindowClassEx">
+            <summary>Get window class ex.</summary>
+            <returns>Window class ex.</returns>
+        </member>
+        <member name="M:MikanWindow.SetParentWindowHandle(HWND__*)">
+            <summary>Set parent window handle.</summary>
+            <param name="wh">Parent window handle.</param>
+        </member>
+        <member name="M:MikanWindow.GetParentWindowHandle">
+            <summary>Get parent window handle.</summary>
+            <returns>Window handle.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowHandle(HWND__*)">
+            <summary>Set window handle.</summary>
+            <param name="wh">Window handle.</param>
+        </member>
+        <member name="M:MikanWindow.GetWindowHandle">
+            <summary>Get window handle.</summary>
+            <returns>Window handle.</returns>
+        </member>
+        <member name="M:MikanWindow.CenteringWindow(System.Int32)">
+            <summary>Set window center in display.(Refrect when call SetWindow())</summary>
+            <param name="display">Target display number.</param>
+        </member>
+        <member name="M:MikanWindow.CenteringWindow">
+            <summary>Set window center in display.(Refrect when call SetWindow())</summary>
+        </member>
+        <member name="M:MikanWindow.SetPosition(System.Int32,System.Int32)">
+            <summary>Set window position.(Refrect when call SetWindow())</summary>
+            <param name="x">Window x position.</param>
+            <param name="y">Window y position.</param>
+        </member>
+        <member name="M:MikanWindow.SetY(System.Int32)">
+            <summary>Set window y position.(Refrect when call SetWindow())</summary>
+            <param name="y">Window y position.</param>
+        </member>
+        <member name="M:MikanWindow.SetX(System.Int32)">
+            <summary>Set window x positoin.(Refrect when call SetWindow())</summary>
+            <param name="x">Window x position.</param>
+        </member>
+        <member name="M:MikanWindow.GetY(System.Boolean)">
+            <summary>Get window y position.</summary>
+            <param name="calc">true = Examine now window state.</param>
+            <returns>Window y position.</returns>
+        </member>
+        <member name="M:MikanWindow.GetX(System.Boolean)">
+            <summary>Get window x position.</summary>
+            <param name="calc">true = Examine now window state.</param>
+            <returns>Window x position.</returns>
+        </member>
+        <member name="M:MikanWindow.SetScreenSize(System.UInt32,System.UInt32)">
+            <summary>Set window size from client size.(Refrect when call SetWindow())</summary>
+            <param name="width">Client width.</param>
+            <param name="width">Client height.</param>
+        </member>
+        <member name="M:MikanWindow.SetWindowSize(System.UInt32,System.UInt32)">
+            <summary>Set window size.(Refrect when call SetWindow())</summary>
+            <param name="width">Window width.</param>
+            <param name="height">Window height.</param>
+        </member>
+        <member name="M:MikanWindow.SetHeight(System.UInt32)">
+            <summary>Set window height.(Refrect when call SetWindow())</summary>
+            <param name="width">Window height.</param>
+        </member>
+        <member name="M:MikanWindow.SetWidth(System.UInt32)">
+            <summary>Set window width.(Refrect when call SetWindow())</summary>
+            <param name="width">Window width.</param>
+        </member>
+        <member name="M:MikanWindow.GetHeight(System.Boolean)">
+            <summary>Get window height.</summary>
+            <param name="calc">true = Examine now window state.</param>
+            <returns>Window height.</returns>
+        </member>
+        <member name="M:MikanWindow.GetWidth(System.Boolean)">
+            <summary>Get window width.</summary>
+            <param name="calc">true = Examine now window state.</param>
+            <returns>Window width.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowStyleEx(System.UInt32!System.Runtime.CompilerServices.IsLong)">
+            <summary>Set window style ex.(Refrect when call SetWindow())</summary>
+            <param name="wse">Window style ex.</param>
+        </member>
+        <member name="M:MikanWindow.GetWindowStyleEx">
+            <summary>Get window style ex.</summary>
+            <returns>Window style ex.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowStyle(System.UInt32!System.Runtime.CompilerServices.IsLong)">
+            <summary>Set window style.(Refrect when call SetWindow())</summary>
+            <param name="ws">Window style.</param>
+        </member>
+        <member name="M:MikanWindow.GetWindowStyle">
+            <summary>Get window style.</summary>
+            <returns>Window style.</returns>
+        </member>
+        <member name="M:MikanWindow.SetIcon(HINSTANCE__*,System.Char!System.Runtime.CompilerServices.IsConst*,System.Char!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window icon.</summary>
+            <param name="instance">Instance.(Have icon resource)</param>
+            <param name="smalliconname">Resource name.(Small icon)</param>
+            <param name="bigiconname">Resource name.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetIcon(System.Char!System.Runtime.CompilerServices.IsConst*,System.Char!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window icon.</summary>
+            <param name="smalliconname">Resource name.(Small icon)</param>
+            <param name="bigiconname">Resource name.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetIcon(HINSTANCE__*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window icon.</summary>
+            <param name="instance">Instance.(Have icon resource)</param>
+            <param name="smalliconname">Resource name.(Small icon)</param>
+            <param name="bigiconname">Resource name.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetIcon(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*,System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window icon.</summary>
+            <param name="smalliconname">Resource name.(Small icon)</param>
+            <param name="bigiconname">Resource name.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetIcon(HINSTANCE__*,System.Int32,System.Int32)">
+            <summary>Set window icon.</summary>
+            <param name="instance">Instance.(Have icon resource)</param>
+            <param name="smalliconnum">Resource number.(Small icon)</param>
+            <param name="bigiconnum">Resource number.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetIcon(System.Int32,System.Int32)">
+            <summary>Set window icon.</summary>
+            <param name="smalliconnum">Resource number.(Small icon)</param>
+            <param name="bigiconnum">Resource number.(Big icon)</param>
+        </member>
+        <member name="M:MikanWindow.SetTitle(System.Char!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window title.(Refrect when call SetWindow())</summary>
+            <param name="name">Window title.</param>
+        </member>
+        <member name="M:MikanWindow.SetTitle(System.SByte!System.Runtime.CompilerServices.IsSignUnspecifiedByte!System.Runtime.CompilerServices.IsConst*)">
+            <summary>Set window title.(Refrect when call SetWindow())</summary>
+            <param name="name">Window title.</param>
+        </member>
+        <member name="M:MikanWindow.GetTitle">
+            <summary>Get window name.(Title bar)</summary>
+            <returns>Window title.</returns>
+        </member>
+        <member name="M:MikanWindow.GetWindowClassNameEx">
+            <summary>Get window class name.</summary>
+            <returns>Window class name.</returns>
+        </member>
+        <member name="M:MikanWindow.SetWindowType(WINDOWTYPE,System.Int32)">
+            <summary>Set window from WINDOWTYPE.</summary>
+            <param name="type">enum WINDOWTYPE value.</param>
+            <param name="display">Display number.</param>
+        </member>
+        <member name="M:MikanWindow.Create(System.Int32)">
+            <summary>Create window.</summary>
+            <param name="nCmdShow">4th arg in WinMain.</param>
+        </member>
+        <member name="F:WT_FULLSCREEN">
+            <summary>Full screen.</summary>
+        </member>
+        <member name="F:WT_NOFRAME">
+            <summary>No frame window.</summary>
+        </member>
+        <member name="F:WT_NORESIZEFULLSCREEN">
+            <summary>Pseudo full screen window.</summary>
+        </member>
+        <member name="F:WT_NORMAL">
+            <summary>Can resize window.</summary>
+        </member>
+        <member name="F:WT_DEFAULT">
+            <summary>No resize window.</summary>
+        </member>
+        <member name="F:WT_RENEWAL">
+            <summary>Intact.</summary>
+        </member>
+        <member name="M:MikanLite.SetGameView(GameView*)">
+            <summary>Set GameView.</summary>
+            <param name="gview">Change GameView when next frame.</param>
+        </member>
+        <member name="M:MikanLite.SetGameLoop(System.Boolean)">
+            <summary>Set game loop.</summary>
+            <param name="run">false = Exit game before next frame.</param>
+        </member>
+        <member name="M:MikanLite.WaitNextFrame">
+            <summary>Wait next frame.</summary>
+        </member>
+        <member name="M:MikanLite.SetActive(System.Boolean)">
+            <summary>Set window active.</summary>
+            <param name="active">true is window active.</param>
+        </member>
+        <member name="M:MikanLite.IsActive">
+            <summary>Can get window active.</summary>
+            <returns>true = Window active.</returns>
+        </member>
+        <member name="M:MikanLite.SetPermitScreenSaver(System.Boolean)">
+            <summary>Permit screen saver.</summary>
+            <param name="enable">true = Permit screen saver.</param>
+        </member>
+        <member name="M:MikanLite.IsPermitScreenSaver">
+            <summary>Can get permit screen saver.</summary>
+            <returns>true = Permit screen saver.</returns>
+        </member>
+        <member name="T:MikanLite">
+            <summary>MikanLite System</summary>
+        </member>
+        <member name="M:GameView.Final">
+            <summary>Finalization</summary>
+        </member>
+        <member name="M:GameView.Loop">
+            <summary>Run every frame.</summary>
+            <returns>Exit program when return false.</returns>
+        </member>
+        <member name="M:GameView.Init">
+            <summary>Initialization</summary>
+        </member>
+        <member name="T:GameView">
+            <summary>
+GameView
+GameView is life cycle in MikanLite world.
+Init() =&gt; Loop() called every frames =&gt; Final()
+</summary>
+        </member>
+        <member name="T:MIKAN_LITE">
+            <summary>First run.</summary>
+            <summary>MikanLite data.</summary>
+        </member>
+    </members>
+</doc>
