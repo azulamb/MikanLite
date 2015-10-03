@@ -6,7 +6,8 @@ MikanLite use Direct2D.
 
 ## Sample
 
-Download MikanLite.dll and MikanLite.dll puts in the same location as the exe.
+Download MikanLite.dll and MikanLite.h.
+MikanLite.dll puts in the same location as the exe.
 
 ```cpp
 #include "MikanLite.h"
