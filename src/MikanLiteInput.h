@@ -1,7 +1,6 @@
 #ifndef __MIKAN_LITE_INPUT
 #define __MIKAN_LITE_INPUT
 
-#include "MikanLite.h"
 #include "Common.h"
 
 struct MOUSEDATA

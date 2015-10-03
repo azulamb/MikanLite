@@ -14,13 +14,19 @@
 
 extern int Main();
 
+#ifdef _DEBUG
+#  define MIKANLITE_DLL "MikanLiteD.dll"
+#else
+#  define MIKANLITE_DLL "MikanLite.dll"
+#endif
+
 /// <summary>First run.</summary>
 #define MikanLiteInit struct MIKAN_LITE Mikan;\
 int WINAPI WinMain( HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine, int nCmdShow ){\
 	HINSTANCE dll;\
 	int( *MLMain )( int( *)( ), HINSTANCE, struct MIKAN_LITE *, HINSTANCE, HINSTANCE, PSTR, int );\
 	int( *MLVer )();\
-	if ( !( dll = ::LoadLibraryEx( TEXT( "mikanlite.dll" ), NULL, 0 ) ) ) { fprintf( stderr, "Mikan Lite DLL version is different." ); return 1; }\
+	if ( !( dll = ::LoadLibraryEx( TEXT( MIKANLITE_DLL ), NULL, 0 ) ) ) { fprintf( stderr, "Mikan Lite DLL version is different." ); return 1; }\
 	MLVer = ( int( *)() )::GetProcAddress( dll, "MikanLiteVerCode" );\
 	if ( MLVer() != MIKANLITE_VERCODE ){ return 1; }\
 	MLMain = ( int( *)( int( *)( ), HINSTANCE, struct MIKAN_LITE *, HINSTANCE, HINSTANCE, PSTR, int ) )::GetProcAddress( dll, "MikanLiteMain" );\

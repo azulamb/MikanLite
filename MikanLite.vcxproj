@@ -148,29 +148,30 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Common.cpp" />
-    <ClCompile Include="MikanLiteDesktop.cpp" />
-    <ClCompile Include="MikanLiteDraw.cpp" />
-    <ClCompile Include="MikanLiteDrawManagement.cpp" />
-    <ClCompile Include="MikanLiteFont.cpp" />
-    <ClCompile Include="MikanLiteInput.cpp" />
-    <ClCompile Include="MikanLiteSystem.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MikanLiteWindow.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Common.h" />
     <ClInclude Include="MikanLite.h" />
-    <ClInclude Include="MikanLiteDraw.h" />
-    <ClInclude Include="MikanLiteInput.h" />
-    <ClInclude Include="MikanLiteSystem.h" />
-    <ClInclude Include="MikanLiteWindow.h" />
+    <ClInclude Include="src\Common.h" />
+    <ClInclude Include="src\MikanLiteDraw.h" />
+    <ClInclude Include="src\MikanLiteInput.h" />
+    <ClInclude Include="src\MikanLiteSystem.h" />
+    <ClInclude Include="src\MikanLiteWindow.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <ClCompile Include="src\Common.cpp" />
+    <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\MikanLiteDesktop.cpp" />
+    <ClCompile Include="src\MikanLiteDraw.cpp" />
+    <ClCompile Include="src\MikanLiteDrawManagement.cpp" />
+    <ClCompile Include="src\MikanLiteFont.cpp" />
+    <ClCompile Include="src\MikanLiteInput.cpp" />
+    <ClCompile Include="src\MikanLiteSystem.cpp" />
+    <ClCompile Include="src\MikanLiteWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="icon.ico" />
+    <Image Include="src\icon.ico" />
+    <Image Include="src\iconbig.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

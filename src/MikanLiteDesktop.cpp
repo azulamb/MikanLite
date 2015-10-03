@@ -1,4 +1,4 @@
-#include "MikanLite.h"
+#include "Common.h"
 
 int MikanWindow::GetDisplayMax( void )
 {

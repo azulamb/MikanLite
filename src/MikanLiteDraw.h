@@ -1,7 +1,6 @@
 #ifndef __MIKAN_LITE_DRAW
 #define __MIKAN_LITE_DRAW
 
-#include "MikanLite.h"
 #include "Common.h"
 #include <D2d1.h>
 #include <D2d1helper.h>

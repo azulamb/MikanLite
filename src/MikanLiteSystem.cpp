@@ -6,7 +6,11 @@ void MikanLiteSystem::Update()
 	{
 		return;
 	}
-	if ( now ) { now->Final(); }
+	if ( now )
+	{
+		now->Final();
+		delete( now );
+	}
 	now = next;
 	next = NULL;
 	now->Init();

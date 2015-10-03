@@ -1,7 +1,7 @@
 #ifndef __MIKAN_LITE_WINDOW
 #define __MIKAN_LITE_WINDOW
 
-#include "MikanLite.h"
+#include "Common.h"
 
 #define MIKANLITEWINDOWCLASSNAME "MIKANLITEWINDOW"
 

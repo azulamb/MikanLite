@@ -1,7 +1,6 @@
 #ifndef __MIKAN_LITE_SYSTEM
 #define __MIKAN_LITE_SYSTEM
 
-#include "MikanLite.h"
 #include "Common.h"
 
 #define _CRTDBG_MAP_ALLOC

@@ -1,6 +1,8 @@
 #ifndef __MIKAN_LITE_COMMON_LIB
 #define __MIKAN_LITE_COMMON_LIB
 
+#include "../MikanLite.h"
+
 #define SafeRelease(x) if(x){x->Release(); x=NULL;}
 
 wchar_t *Wchar2Char( const char *str );
