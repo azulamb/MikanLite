@@ -1,9 +1,9 @@
 #ifndef __MIKAN_LITE
 #define __MIKAN_LITE
 
-#define MIKANLITE_VER "0.0.1"
-#define	MIKANLITE_VERSION 0,0,1,0
-#define MIKANLITE_VERCODE 0
+#define MIKANLITE_VER "0.0.2"
+#define	MIKANLITE_VERSION 0,0,2,0
+#define MIKANLITE_VERCODE 1
 
 #include <windows.h>
 #include <stdio.h>
@@ -65,9 +65,17 @@ public:
 class MikanLite
 {
 public:
+	/// <summary>Get instance.(1ft Main arg)</summary>
+	/// <returns>HINSTANCE</returns>
 	virtual HINSTANCE GetInstance( void ) = 0;
+	/// <summary>Get prev instance.(2nd Main arg)</summary>
+	/// <returns>HINSTANCE</returns>
 	virtual HINSTANCE GetPrevInstance( void ) = 0;
+	/// <summary>Get command.(3rd Main arg)</summary>
+	/// <returns>Command.</returns>
 	virtual PSTR GetCommand( void ) = 0;
+	/// <summary>Get command show.(4th Main arg)</summary>
+	/// <returns>Command show.</returns>
 	virtual int GetCommandShow( void ) = 0;
 
 	/// <summary>Can get permit screen saver.</summary>
@@ -84,11 +92,21 @@ public:
 	/// <param name="active">true is window active.</param>
 	virtual void SetActive( bool active ) = 0;
 
+	/// <summary>Cannot run when inactive window.</summary>
+	/// <returns>teur = cannot run inactive window.</returns>
 	virtual bool CannotRunInactiveWindow( void ) = 0;
+	/// <summary>Set run when inactive window.</summary>
+	/// <returns>HINSTANCE</returns>
 	virtual void SetInactiveWindow( bool notruninactive = true ) = 0;
 
+	/// <summary>Set FPSController.</summary>
+	/// <param name="fps">class FPSController.</param>
 	virtual void SetFPSController( class FPSController *fps ) = 0;
+	/// <summary>Get now FPS.</summary>
+	/// <returns>FPS.</returns>
 	virtual float GetNowFPS( void ) = 0;
+	/// <summary>Set FPS.</summary>
+	/// <param name="fps">class FPS.</param>
 	virtual void SetFPS( int fps ) = 0;
 	/// <summary>Wait next frame.</summary>
 	virtual void WaitNextFrame( void ) = 0;
@@ -105,9 +123,16 @@ public:
 class FPSController
 {
 public:
+	/// <summary>Get now FPS.</summary>
+	/// <returns>FPS.</returns>
 	virtual float GetNowFPS( void ) = 0;
+	/// <summary>Get FPS(config).</summary>
+	/// <returns>FPS.</returns>
 	virtual int GetFPS( void ) = 0;
+	/// <summary>Set FPS.</summary>
+	/// <param name="fps">FPS.</param>
 	virtual void SetFPS( int fps ) = 0;
+	/// <summary>Wait next frame.</summary>
 	virtual void Wait( void ) = 0;
 };
 
@@ -337,6 +362,9 @@ public:
 	static void GetDesktopSize( int *width, int *height );
 };
 
+#define TRC_NONE 0
+#define TRC_ZERO 1
+
 class MikanDraw
 {
 public:
@@ -354,11 +382,46 @@ public:
 	virtual void ClearScreen( void ) = 0;
 
 	/// <summary>Draw box.</summary>
-	/// <param name="x">X position.</param>
-	/// <param name="t">Y position.</param>
+	/// <param name="x">X position.(Left top)</param>
+	/// <param name="t">Y position.(Left top)</param>
 	/// <param name="w">Width.</param>
 	/// <param name="h">Height.</param>
+	/// <param name="color">Color code.(0xAARRGGBB)</param>
 	virtual void DrawBox( int x, int y, int w, int h, unsigned long color ) = 0;
+	/// <summary>Draw box.</summary>
+	/// <param name="cx">X position.(Center)</param>
+	/// <param name="ct">Y position.(Center)</param>
+	/// <param name="w">Width.</param>
+	/// <param name="h">Height.</param>
+	/// <param name="color">Color code.(0xAARRGGBB)</param>
+	virtual void DrawBoxC( int cx, int cy, int w, int h, unsigned long color ) = 0;
+
+	/// <summary>Create texture.(Load image file.)</summary>
+	/// <param name="tex">Texture number.(Max 31)</param>
+	/// <param name="filename">Image filename.</param>
+	/// <returns>Error code.(HRESULT)</returns>
+	virtual long CreateTexture( unsigned int tex, const wchar_t *filename, int trc = TRC_NONE ) = 0;
+	virtual unsigned int GetTextureWidth( unsigned int tex ) = 0;
+	virtual unsigned int GetTextureHeight( unsigned int tex ) = 0;
+
+	/// <summary>Draw texture.</summary>
+	/// <param name="tex">Texture number.(Max 31)</param>
+	/// <param name="rx">Read X.</param>
+	/// <param name="ry">Read Y.</param>
+	/// <param name="w">Width.</param>
+	/// <param name="h">Height.</param>
+	/// <param name="dx">Draw X.</param>
+	/// <param name="dx">Draw Y.</param>
+	virtual void DrawTexture( unsigned int tex, int rx, int ry, int w, int h, int dx, int dy ) = 0;
+	/// <summary>Draw texture.</summary>
+	/// <param name="tex">Texture number.(Max 31)</param>
+	/// <param name="rx">Read X.</param>
+	/// <param name="ry">Read Y.</param>
+	/// <param name="w">Width.</param>
+	/// <param name="h">Height.</param>
+	/// <param name="dx">Draw center X.</param>
+	/// <param name="dx">Draw center Y.</param>
+	virtual void DrawTextureC( unsigned int tex, int rx, int ry, int w, int h, int dx, int dy ) = 0;
 
 	/// <summary>Create font.</summary>
 	/// <param name="font">Font number.(Max 31)</param>
@@ -400,12 +463,24 @@ public:
 class MikanInput
 {
 public:
+	/// <summary>Get mouse X position.</summary>
+	/// <returns>Mouse X posiiton.</returns>
 	virtual int GetMouseX( void ) = 0;
+	/// <summary>Get mouse Y position.</summary>
+	/// <returns>Mouse Y posiiton.</returns>
 	virtual int GetMouseY( void ) = 0;
 	virtual void SetMousePosition( int x, int y ) = 0;
+	/// <summary>Get mouse click frame.</summary>
+	/// <param name="button">Mouse button num.(0 = left, 1 = right, 2 = wheel)</param>
+	/// <returns>Frame.(0 = no, Greater than 1 = click frame, -1 = Release button. )</returns>
 	virtual int GetMouseFrame( unsigned int button ) = 0;
 
+	/// <summary>Get keyboard press frame.</summary>
+	/// <param name="keycode">Virtual keycode.(K_A,K_1,K_ENTER,K_ESC,etc ...)</param>
+	/// <returns>Frame.(0 = no, Greater than 1 = click frame, -1 = Release button. )</returns>
 	virtual int GetKeyFrame( unsigned char keycode ) = 0;
+	/// <summary>Get which key pressed.</summary>
+	/// <returns>Virtual keycode.</returns>
 	virtual unsigned char GetWhichKey( void ) = 0;
 };
 
